@@ -1,0 +1,61 @@
+//Evaluate postfix
+#include<stdio.h>
+#include<ctype.h>
+
+
+int stack[100];
+int top=-1;
+void push(int x)
+  {
+
+      stack[++top]=x;
+  }
+  int pop()
+  {
+      if(top==-1)
+        return -1;
+      else
+        return stack[top--];
+  }
+  int main()
+  {
+  int num,A,B,C;
+    char exp[100];
+    char *e;
+    printf("Enter the expression :");
+    scanf("%s",&exp);
+    printf("\n");
+    e=exp;
+
+    while(*e!='\0')
+    {
+    if(isdigit(*e))
+    {
+    num=*e-48;
+    push(num);
+
+    }
+    else{
+    A=pop();
+    B=pop();
+
+
+    switch(*e){
+    case '+':C=B+A; break;
+    case '-':C=B-A; break;
+    case '*':C=B*A; break;
+    case '/':C=B/A; break;
+    default:
+    printf("Invalid expression\n");
+
+}
+push(C);
+    }
+    e++;
+
+  }
+int element = pop();
+printf("Result is %d\n", element);
+
+return 0;
+}
