@@ -1,0 +1,73 @@
+//STACK USING ARRAY
+
+#include <stdio.h>
+#include <stdlib.h>
+void push(void);
+void pop(void);
+void display(void);
+
+int stack[100],i,top,m;
+void main()
+{
+    int ch;
+    printf("Enter size of stack:");
+    scanf("%d",&m);
+     top=-1;
+     do
+     {
+         printf("\n Operation:1.push,2.pop,3.display:");
+         scanf("%d",&ch);
+
+            switch(ch)
+            {
+                case 1:push();
+                break;
+                case 2:pop();
+                break;
+                case 3:display();
+                break;
+                case 4:exit(0);
+                default: printf("Enter the valid number");
+                break;
+            }
+     }while(ch!=4);
+}
+void push()
+{
+    int data;
+    if(top>=m-1)
+    {
+        printf("stack is full");
+    }
+        else
+        {
+            printf("Enter data:");
+            scanf("%d",&data);
+            top=top+1;
+            stack[top]=data;
+        }
+}
+void pop()
+{
+    if(top==-1)
+    {
+        printf("stack is empty");
+    }
+    else
+    {
+        printf("\n delete the data: %d",stack[top]);
+        top=top-1;
+    }
+}
+void display()
+{
+    if(top==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        for(i=top;i>=0;i--)
+            printf("%d",stack[i]);
+    }
+}
